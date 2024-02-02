@@ -19,6 +19,7 @@ while (True):
     driver = webdriver.Chrome()
 
     driver.get('https://termine.staedteregion-aachen.de/auslaenderamt/')
+    driver.minimize_window()
 
     driver.find_element("id", 'cookie_msg_btn_no').click()
 
@@ -45,6 +46,8 @@ while (True):
     element.click()
     time.sleep(1)
     driver.execute_script("window.scrollBy(0, 400);")
+    
+    
     if 'Kein freier Termin verfügbar' in driver.page_source:
         print("Text is present")
         time.sleep(10)
@@ -54,6 +57,9 @@ while (True):
         break
 
 print("NEW STUFF ONLINE")
-wave_obj = sa.WaveObject(toneSuccess.raw_data, num_channels=toneSuccess.channels, bytes_per_sample=toneSuccess.sample_width, sample_rate=toneSuccess.frame_rate)
-play_obj = wave_obj.play()
-play_obj.wait_done()
+#wave_obj = sa.WaveObject(toneSuccess.raw_data, num_channels=toneSuccess.channels, bytes_per_sample=toneSuccess.sample_width, sample_rate=toneSuccess.frame_rate)
+#play_obj = wave_obj.play()
+#play_obj.wait_done()
+
+input("Press Enter to quit...")
+driver.quit()
